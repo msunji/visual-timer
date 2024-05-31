@@ -16,3 +16,11 @@
   border-radius: 50%;
   background: white;
 }
+
+.timer-inner {
+  transform: translate(10px, 10px);
+  height: 330px;
+  width: 330px;
+  border-radius: 50%;
+  background: conic-gradient(white 0% 0.95%, green 1% 100%);
+}

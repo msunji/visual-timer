@@ -21,8 +21,27 @@ const minutes = ref()
         <input type="number" v-model="minutes" placeholder="0" min="0" max="60" step="1" />
         <button>Go</button>
       </div>
-      <div id="timer">
-        <div class="timer-inner"></div>
+      <div>
+        <svg
+          version="1.1"
+          width="400"
+          height="400"
+          viewBox="0 0 400 400"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="50%" cy="50%" r="40%" fill="white" id="outer-circle" />
+          <circle
+            id="inner-circle"
+            cx="50%"
+            cy="50%"
+            r="19%"
+            fill="transparent"
+            stroke="tomato"
+            stroke-width="38%"
+            stroke-dasharray="20% 119.32%"
+            transform="rotate(-90) translate(-400)"
+          />
+        </svg>
       </div>
       <p>time is {{ minutes }}</p>
       <div>

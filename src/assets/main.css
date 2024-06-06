@@ -17,10 +17,20 @@
   background: white;
 }
 
-.timer-inner {
-  transform: translate(10px, 10px);
-  height: 330px;
-  width: 330px;
-  border-radius: 50%;
-  background: conic-gradient(white 0% 0.95%, green 1% 100%);
+#outer-circle {
+  fill: var(--purple-light);
+  opacity: 60%;
+}
+#inner-circle {
+  stroke: tomato;
+  fill: transparent;
+  stroke-dasharray: 119.32% 119.32%;
+  stroke-dashoffset: 59.66%;
+  animation: fill 5s linear;
+}
+
+@keyframes fill {
+  to {
+    stroke-dasharray: 119.32% 119.32%;
+  }
 }

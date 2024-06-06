@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const minutes = ref()
+const minutes = ref(0)
 
 // function setMinutes(mins) {
 //   console.log(mins)
@@ -29,7 +29,7 @@ const minutes = ref()
           viewBox="0 0 400 400"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="50%" cy="50%" r="40%" fill="white" id="outer-circle" />
+          <circle cx="50%" cy="50%" r="40%" id="outer-circle" />
           <circle
             id="inner-circle"
             cx="50%"
@@ -38,7 +38,6 @@ const minutes = ref()
             fill="transparent"
             stroke="tomato"
             stroke-width="38%"
-            stroke-dasharray="20% 119.32%"
             transform="rotate(-90) translate(-400)"
           />
         </svg>

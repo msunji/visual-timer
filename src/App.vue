@@ -3,6 +3,8 @@ import { ref, computed } from 'vue'
 
 const time = ref(0)
 const elapsedTime = ref(0)
+let timerRunning = false
+
 const remainingTime = computed(() => {
   return 119.32 / (60 / (60 - elapsedTime.value))
 })
@@ -30,7 +32,7 @@ const updateTimer = () => {
   }
 }
 
-const stopTimer = () => {
+const resetTimer = () => {
   console.log('resetting')
   time.value = 0
   updateTimer()
@@ -73,7 +75,7 @@ const stopTimer = () => {
       </div>
       <div>
         <button>Pause</button>
-        <button @click="stopTimer">Stop and Reset</button>
+        <button @click="resetTimer">Reset</button>
       </div>
     </main>
   </div>

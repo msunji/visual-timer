@@ -10,6 +10,7 @@ let timerId = null
 
 const updateTimer = () => {
   elapsedTime.value = time.value
+
   if (time.value > 0) {
     console.log('starting')
 
@@ -18,9 +19,14 @@ const updateTimer = () => {
 
       if (elapsedTime.value <= 0) {
         console.log('stopping')
+        time.value = 0
         clearInterval(timerId)
+        return
       }
-    }, 60000)
+    }, 1000)
+  } else {
+    clearInterval(timerId)
+    return
   }
 }
 

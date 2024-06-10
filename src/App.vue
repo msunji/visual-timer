@@ -8,19 +8,26 @@ const remainingTime = computed(() => {
 })
 let timerId = null
 
-const startTimer = () => {
+const updateTimer = () => {
+  elapsedTime.value = time.value
   if (time.value > 0) {
-    elapsedTime.value = time.value
     console.log('starting')
 
     timerId = setInterval(() => {
       elapsedTime.value -= 1
 
       if (elapsedTime.value <= 0) {
+        console.log('stopping')
         clearInterval(timerId)
       }
     }, 60000)
   }
+}
+
+const stopTimer = () => {
+  console.log('resetting')
+  time.value = 0
+  updateTimer()
 }
 </script>
 
@@ -34,7 +41,7 @@ const startTimer = () => {
       <div>
         <p>Set minutes:</p>
         <input type="number" v-model="time" placeholder="0" min="0" max="60" />
-        <button @click="startTimer">Go</button>
+        <button @click="updateTimer">Go</button>
         <p style="color: white">{{ elapsedTime }}</p>
       </div>
       <div>
@@ -59,8 +66,8 @@ const startTimer = () => {
         </svg>
       </div>
       <div>
-        <button>Stop</button>
-        <button @click="resetTimer">Clear</button>
+        <button>Pause</button>
+        <button @click="stopTimer">Stop and Reset</button>
       </div>
     </main>
   </div>

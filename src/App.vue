@@ -1,12 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const minutes = ref(0)
+const time = ref(0)
+const elapsedTime = ref(0)
+const remainingTime = computed(() => {
+  return 119.32 / (60 / (60 - elapsedTime.value))
+})
+let timerId = null
 
-// function setMinutes(mins) {
-//   console.log(mins)
-//   return;
-// }
+const startTimer = () => {
+  if (time.value > 0) {
+    elapsedTime.value = time.value
+    console.log('starting')
+
+    timerId = setInterval(() => {
+      elapsedTime.value -= 1
+
+      if (elapsedTime.value <= 0) {
+        clearInterval(timerId)
+      }
+    }, 60000)
+  }
+}
 </script>
 
 <template>
@@ -18,8 +33,9 @@ const minutes = ref(0)
     <main>
       <div>
         <p>Set minutes:</p>
-        <input type="number" v-model="minutes" placeholder="0" min="0" max="60" step="1" />
-        <button>Go</button>
+        <input type="number" v-model="time" placeholder="0" min="0" max="60" />
+        <button @click="startTimer">Go</button>
+        <p style="color: white">{{ elapsedTime }}</p>
       </div>
       <div>
         <svg
@@ -32,21 +48,35 @@ const minutes = ref(0)
           <circle cx="50%" cy="50%" r="40%" id="outer-circle" />
           <circle
             id="inner-circle"
+            :style="{ 'stroke-dashoffset': remainingTime + '%' }"
             cx="50%"
             cy="50%"
             r="19%"
             fill="transparent"
-            stroke="tomato"
             stroke-width="38%"
             transform="rotate(-90) translate(-400)"
           />
         </svg>
       </div>
-      <p>time is {{ minutes }}</p>
       <div>
         <button>Stop</button>
-        <button>Clear</button>
+        <button @click="resetTimer">Clear</button>
       </div>
     </main>
   </div>
 </template>
+
+<style>
+#inner-circle {
+  stroke: tomato;
+  fill: transparent;
+  stroke-dasharray: 119.32% 119.32%;
+  animation: fill 5s linear;
+}
+
+@keyframes fill {
+  to {
+    stroke-dasharray: 119.32% 119.32%;
+  }
+}
+</style>

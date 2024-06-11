@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+#timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #timer {
   height: 350px;
   width: 350px;
@@ -20,17 +25,4 @@
 #outer-circle {
   fill: var(--purple-light);
   opacity: 60%;
-}
-#inner-circle {
-  stroke: tomato;
-  fill: transparent;
-  stroke-dasharray: 119.32% 119.32%;
-  stroke-dashoffset: 59.66%;
-  animation: fill 5s linear;
-}
-
-@keyframes fill {
-  to {
-    stroke-dasharray: 119.32% 119.32%;
-  }
 }

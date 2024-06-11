@@ -1,19 +1,11 @@
 :root {
   --white: #ffffff;
-  --black: #171717;
+  --white-purple: #c6beef;
+  --black: #050517;
   --grey: #2b2b2b;
-  --purple-dark: #1e1c28;
-  --purple-light: #777192;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --purple-dark: #1a1826;
+  --purple-light: #7466b7;
+  --green: #2bdd9b;
 }
 :root {
   --color-background: var(--purple-dark);
@@ -21,8 +13,8 @@
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-heading: var(--white-purple);
+  --color-text: var(--white-purple);
 
   --section-gap: 160px;
 }
@@ -60,4 +52,11 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  border: 0;
+  background: var(--purple-light);
+  border-radius: 3px;
+  padding: 0.75rem 0.5rem;
 }

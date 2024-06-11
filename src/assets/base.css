@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --white: #ffffff;
+  --white: rgb(255, 255, 255);
   --white-purple: #eeebff;
   --black: #050517;
   --grey: #2b2b2b;
   --purple-dark: #1a1826;
   --purple-light: #7466b7;
   --green: #2bdd9b;
-  --pink: #ff4a95;
+  --salmon: #f89595;
+  --old-rose: #ffc2b4;
   --text-font: 'Poppins', sans-serif;
   --header-font: 'Pixelify Sans', sans-serif;
 }
@@ -34,7 +35,8 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  background: var(--old-rose);
+  background: linear-gradient(180deg, var(--old-rose) 0%, var(--salmon) 100%);
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -58,11 +60,4 @@ h2 {
 h1 {
   font-size: 2.5em;
   letter-spacing: 0.18rem;
-}
-
-input {
-  border: 0;
-  background: var(--purple-light);
-  border-radius: 3px;
-  padding: 0.75rem 0.5rem;
 }

@@ -5,14 +5,21 @@ const time = ref(0)
 const elapsedTime = ref(0)
 let timerRunning = false
 
-const remainingTimeSegment = computed(() => {
-  let value = 119.32 / (60 / (60 - elapsedTime.value))
+const diameter = 290
+const outerRad = diameter * 0.4
+const innerRad = outerRad / 2
+const circumference = 2 * Math.PI * innerRad
 
-  if (value > 0 && !isNaN(value)) {
-    return value
-  }
-  return 0
+const remainingTimeSegment = computed(() => {
+  return circumference * (1 - elapsedTime.value / 60)
 })
+
+const innerCircleAttrs = {
+  r: innerRad,
+  'stroke-width': outerRad,
+  'stroke-dasharray': `${circumference} ${circumference}`
+}
+
 let timerId = null
 
 const updateTimer = () => {
@@ -59,26 +66,22 @@ const resetTimer = () => {
         </div>
         <div>
           <svg
+            class="timer-shape"
             version="1.1"
-            width="400"
-            height="400"
-            viewBox="0 0 400 400"
+            viewBox="0 0 290 290"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle cx="50%" cy="50%" r="40%" id="outer-circle" />
+            <circle :r="outerRad" cx="50%" cy="50%" class="timer-shape__outer-circle" />
             <circle
-              id="inner-circle"
-              :style="{ 'stroke-dashoffset': remainingTimeSegment + '%' }"
+              class="timer-shape__inner-circle"
               cx="50%"
               cy="50%"
-              r="19%"
-              fill="transparent"
-              stroke-width="38%"
-              transform="rotate(-90) translate(-400)"
+              v-bind="innerCircleAttrs"
+              :style="{ 'stroke-dashoffset': remainingTimeSegment }"
             />
           </svg>
         </div>
-        <div>
+        <div class="timer-container__toggle-buttons">
           <button>Pause</button>
           <button @click="resetTimer">Reset</button>
         </div>
@@ -88,16 +91,34 @@ const resetTimer = () => {
 </template>
 
 <style>
-#inner-circle {
-  stroke: var(--green);
-  fill: transparent;
-  stroke-dasharray: 119.32% 119.32%;
-  animation: fill 5s linear;
+#timer {
+  width: var(--timer-width);
+  height: var(--timer-height);
+  border-radius: 50%;
+  background: transparent;
 }
 
-@keyframes fill {
-  to {
-    stroke-dasharray: 119.32% 119.32%;
-  }
+.timer-shape {
+  width: var(--timer-width);
+  height: var(--timer-height);
 }
+
+.timer-shape__outer-circle {
+  fill: var(--white);
+  opacity: 30%;
+}
+
+.timer-shape__inner-circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: var(--green);
+  fill: transparent;
+  /* animation: dash 5s linear; */
+}
+
+/* @keyframes fill {
+  to {
+    stroke-dasharray: var(--timer-inner-c) var(--timer-inner-c);
+  }
+} */
 </style>

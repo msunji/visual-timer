@@ -17,7 +17,8 @@
 }
 
 .timer-container__input p {
-  font-size: 0.85em;
+  font-size: 0.8em;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
 }
@@ -29,7 +30,12 @@
   background: transparent;
 }
 
-#outer-circle {
+.timer-shape {
+  width: var(--timer-width);
+  height: var(--timer-height);
+}
+
+.timer-shape__outer-circle {
   fill: var(--white);
   opacity: 30%;
 }
@@ -51,4 +57,19 @@ input[type='number'] {
   padding: 0.32rem;
   border-radius: 4px;
   width: fit-content;
+}
+
+button {
+  font-family: var(--text-font);
+  background: var(--purple);
+  border: 0;
+  border-radius: 10px;
+  padding: 0.32rem 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  color: var(--white);
+}
+
+.timer-container__toggle-buttons button:first-child {
+  margin-right: 20px;
 }

@@ -23,23 +23,6 @@
   letter-spacing: 0.05rem;
 }
 
-#timer {
-  height: 290px;
-  width: 290px;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.timer-shape {
-  width: var(--timer-width);
-  height: var(--timer-height);
-}
-
-.timer-shape__outer-circle {
-  fill: var(--white);
-  opacity: 30%;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

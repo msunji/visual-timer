@@ -53,10 +53,6 @@ const resetTimer = () => {
 
 <template>
   <div id="main-app">
-    <header>
-      <h1>Visual Timer</h1>
-    </header>
-
     <main>
       <div class="timer-container">
         <div class="timer-container__input">
